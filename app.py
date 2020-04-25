@@ -50,15 +50,17 @@ def perform_inference():
         preds = MODEL.predict_generator(generator=test_data_gen,
                                         steps=1)
 
-    return jsonify({
-        "akiec": str(preds[0][0]),
-        "bcc": str(preds[0][1]),
-        "bkl": str(preds[0][2]),
-        "df": str(preds[0][3]),
-        "mel": str(preds[0][4]),
-        "nv": str(preds[0][5]),
-        "vasc": str(preds[0][6])
-    })
+        data = {
+            "akiec": str(preds[0][0]),
+            "bcc": str(preds[0][1]),
+            "bkl": str(preds[0][2]),
+            "df": str(preds[0][3]),
+            "mel": str(preds[0][4]),
+            "nv": str(preds[0][5]),
+            "vasc": str(preds[0][6])
+        }
+
+        return jsonify({"data": data})
 
 
 if __name__ == '__main__':
