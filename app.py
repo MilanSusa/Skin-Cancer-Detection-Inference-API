@@ -1,4 +1,5 @@
 import os
+import shutil
 
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
@@ -34,6 +35,22 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+def remove_image():
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    folder_rel_dir = 'skin_cancer_detection_inference_api' + os.path.sep + 'static' + os.path.sep + 'images' + os.path.sep
+    folder_abs_dir = os.path.join(base_dir, folder_rel_dir)
+
+    for filename in os.listdir(folder_abs_dir):
+        file_path = os.path.join(folder_abs_dir, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(f'Failed to delete {file_path}: {e}')
+
+
 @app.route('/api/v1/inference', methods=['POST'])
 def perform_inference():
     file = request.files['file']
@@ -49,7 +66,7 @@ def perform_inference():
 
         preds = MODEL.predict_generator(generator=test_data_gen,
                                         steps=1)
-
+        remove_image()
         data = {
             "akiec": str(preds[0][0]),
             "bcc": str(preds[0][1]),
