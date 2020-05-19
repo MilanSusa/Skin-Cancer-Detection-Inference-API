@@ -11,6 +11,12 @@ Important diagnostic categories in the realm of pigmented lesions are:
 * melanocytic nevi (nv)
 * vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage, vasc)
 
+## Prerequisites
+
+Download [model][1] and put it in the `pretrained_models` directory.
+
+[1]: https://drive.google.com/open?id=1UBux4baGx74mSNwxRz7YtvWD5sKEEMMd
+
 ## Running locally
 
 Navigate to the root directory and execute the following line to start a web server for the application:
