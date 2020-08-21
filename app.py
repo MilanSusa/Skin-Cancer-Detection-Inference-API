@@ -55,6 +55,8 @@ def perform_inference():
     file = request.files['file']
 
     if file and allowed_file(file.filename):
+        remove_image()
+
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
