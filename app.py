@@ -8,11 +8,14 @@ from tensorflow.keras.metrics import top_k_categorical_accuracy
 from keras_preprocessing.image import ImageDataGenerator
 from keras.applications.mobilenet import preprocess_input
 
-UPLOAD_FOLDER = 'skin_cancer_detection_inference_api/static/images'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FOLDER_REL_DIR = 'skin_cancer_detection_inference_api' + os.path.sep + 'static' + os.path.sep + 'images' + os.path.sep
+FOLDER_ABS_DIR = os.path.join(BASE_DIR, FOLDER_REL_DIR)
+
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = FOLDER_ABS_DIR
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
@@ -36,12 +39,8 @@ def allowed_file(filename):
 
 
 def remove_image():
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    folder_rel_dir = 'skin_cancer_detection_inference_api' + os.path.sep + 'static' + os.path.sep + 'images' + os.path.sep
-    folder_abs_dir = os.path.join(base_dir, folder_rel_dir)
-
-    for filename in os.listdir(folder_abs_dir):
-        file_path = os.path.join(folder_abs_dir, filename)
+    for filename in os.listdir(FOLDER_ABS_DIR):
+        file_path = os.path.join(FOLDER_ABS_DIR, filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
