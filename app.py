@@ -8,9 +8,8 @@ from tensorflow.keras.metrics import top_k_categorical_accuracy
 from keras_preprocessing.image import ImageDataGenerator
 from keras.applications.mobilenet import preprocess_input
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FOLDER_REL_DIR = 'skin_cancer_detection_inference_api' + os.path.sep + 'static' + os.path.sep + 'images' + os.path.sep
-FOLDER_ABS_DIR = os.path.join(BASE_DIR, FOLDER_REL_DIR)
+FOLDER_REL_DIR = 'static' + os.path.sep + 'images' + os.path.sep
+FOLDER_ABS_DIR = os.path.join(os.getcwd(), FOLDER_REL_DIR)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
