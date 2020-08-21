@@ -8,7 +8,7 @@ from tensorflow.keras.metrics import top_k_categorical_accuracy
 from keras_preprocessing.image import ImageDataGenerator
 from keras.applications.mobilenet import preprocess_input
 
-UPLOAD_FOLDER = './static/images'
+UPLOAD_FOLDER = 'skin_cancer_detection_inference_api/static/images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
