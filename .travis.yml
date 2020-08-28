@@ -1,3 +1,12 @@
 language: python
 python:
   - "3.7"
+
+install: true
+
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  app: molecious-ml
+  api_key:
+    secure: B3qnOBACHM4+3a1XLlqtlQdJ3xXvoxVLKQcFg6UXbxoPtmn+tSQL2c6yFzso4yjoNpb+C4JDolWF848fbu9gNV92MCKlLF4zh6LR/Irv4llWRn8GOxmY+qTikGfxkE9R53jqyaqoKf/lbVH7I2VNNyd+QP+4gWhFy9ltLXFq3SsgwWOWKuAl/HFCDVmPgavM/DPXMJ4vML5lN5mqo9I/23zTZ4mUhFOG70xxuEukRzzKW5IJM8NbZ8NwOxYn5TjwupxI1qiroJC1D3K6ERXE7mjCd+LhpYcRBWNWCGqjYy40OhKdoGacOA3TBLIVJLkjF7f9Q65rWRJDpZAhEnaLI3kMmQ+K1X4CUAIiGKEhYdLU+B5bAQ+VZOSGilntKd1Y9HOfCGZIuL5hL5OKNiA5Dl0Io8f5OB3E7UgDKh8YXBLCJnWUEkTv9D2117mdB5Rv4KGjyF2IyYjc++LuhZ2pQ0moXkNBfUV9JkYXJK+sc1KSPX8neQMetzZw4oHo4yL1TYVFttVsiTvlp1xWKciQmaxC9r6kW7PTfVsVnvRNB+xIvve5o3ZQe5DQv6EirYmft4lVy6v8FhLfE1dxRucI8pMl3T94bXyqJeRXRXqj8OCq1qd1KXV5etQuGlOGyEJXyLPgnrDo2VthHbzkozh71iV2Fg5h2HNm/zhWg6EOAYo=
